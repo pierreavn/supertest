@@ -1,9 +1,14 @@
 name: Test
+run-name: Receiving Workflow [${{ inputs.uuid }}]
 
 on: 
   workflow_dispatch:
     inputs:
-      tabler_version:
+      uuid:
+        description: 'Run UUID'     
+        required: true
+        type: string
+      typescript_version:
         description: 'Typescript version (x.y.z)'     
         required: true
         type: string
@@ -18,7 +23,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Set Typescript version
-        run: sed -r -i 's/__version__/${{ github.event.inputs.typescript_version }}/' package.json
+        run: sed -r -i 's/__version__/${{ github.event.inputs.typescript_version }}/' package.json && cat package.json
       - name: Install dependencies
         run: npm install
       - name: Run test
