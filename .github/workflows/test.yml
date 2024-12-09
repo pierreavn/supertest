@@ -36,6 +36,6 @@ jobs:
         if: always()
         with:
           name: output
-          path: output.txt
+          path: output-pass.zip
           retention-days: 1
           compression-level: 9
