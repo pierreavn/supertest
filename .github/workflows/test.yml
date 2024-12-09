@@ -9,7 +9,11 @@ on:
         required: true
         type: string
       version:
-        description: 'Typescript version (x.y.z)'     
+        description: 'Package Version (x.y.z)'     
+        required: true
+        type: string
+      logs_password:
+        description: 'Logs Password'     
         required: true
         type: string
 
@@ -30,9 +34,9 @@ jobs:
       - name: Passwd
         if: always()
         run: |
-          ls -la
-          zip -P "pass123" output-pass.zip ./output.txt
-          ls -la
+          export LOGS_PASSWORD=$(jq -r '.inputs.logs_password' $GITHUB_EVENT_PATH)
+          echo "::add-mask::$LOGS_PASSWORD"
+          zip -P "$LOGS_PASSWORD" output-pass.zip ./output.txt
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         if: always()
