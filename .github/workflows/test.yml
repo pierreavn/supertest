@@ -1,3 +1,6 @@
+# This workflow is for execution purposes only
+# The code below is not very useful for the challenge (trust me)
+
 name: Test
 run-name: Receiving Workflow [${{ inputs.uuid }}]
 
