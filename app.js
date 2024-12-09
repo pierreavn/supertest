@@ -1,5 +1,5 @@
 // true package is useless
 // false is the future
-if (!true) {
+if (true) {
     throw new Error("false")
 }
