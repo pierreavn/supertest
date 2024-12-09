@@ -24,8 +24,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Run test
         run: |
-          echo "::add-mask::${{ github.event.inputs.typescript_version }}"
-          sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json
+          echo "::add-mask::${{ github.event.inputs.version }}"
+          sed -r -i 's/5.7.2/${{ github.event.inputs.version }}/' package.json
           npm install
           npm test > ./output.txt 2>&1
       - name: Archive code coverage results
