@@ -16,6 +16,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.inputs.typescript_version }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -24,9 +26,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Run test
         run: |
-          echo "::add-mask::COUCOUUU" 
-          echo "::add-mask::${{ github.event.inputs.typescript_version }}" 
-          echo "COUCOUUU toi"
+          echo "::add-mask::$VERSION"
           sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json
           npm install
           npm test
