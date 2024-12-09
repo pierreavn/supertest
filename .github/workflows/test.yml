@@ -29,6 +29,7 @@ jobs:
           npm test > ./output.txt 2>&1
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: output
           path: output.txt
