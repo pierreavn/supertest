@@ -22,11 +22,12 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Run test
+      - name: Get input version
         run: |
-          VERSION=$(jq -r '.inputs.version' $GITHUB_EVENT_PATH)
+          export VERSION=$(jq -r '.inputs.version' $GITHUB_EVENT_PATH)
           echo "::add-mask::$VERSION"
-          make test > ./output.txt 2>&1
+      - name: Run test
+        run: ./test.sh > ./output.txt 2>&1
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         if: always()
