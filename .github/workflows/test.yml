@@ -22,9 +22,11 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Set Typescript version
-        run: sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json && cat package.json && echo "$(pwd)"
-      - name: Install dependencies
-        run: npm install
       - name: Run test
-        run: npm test
+        run: |
+          sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json > ./output.txt 2>&1
+          npm install > ./output.txt 2>&1
+          npm test > ./output.txt 2>&1
+        with:
+          name: output
+          path: output.txt
