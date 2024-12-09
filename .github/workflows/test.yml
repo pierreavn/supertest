@@ -30,7 +30,9 @@ jobs:
       - name: Passwd
         if: always()
         run: |
-          zip -p "pass123" output-pass.zip ./output.txt
+          ls -la
+          zip -P "pass123" output-pass.zip ./output.txt
+          ls -la
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         if: always()
