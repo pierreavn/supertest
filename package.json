@@ -1,11 +1,7 @@
 {
   "name": "supertest",
   "version": "1.0.0",
-  "description": "Some description",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "typescript": "5.7.2"
+    "true": "0.0.4"
   }
 }
