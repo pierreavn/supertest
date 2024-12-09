@@ -27,6 +27,6 @@ jobs:
       - name: Run test
         run: |
           echo "::add-mask::$VERSION"
-          sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json
+          sed -r -i 's/5.7.2/$VERSION/' package.json
           npm install
           npm test
