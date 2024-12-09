@@ -2,7 +2,7 @@
   "name": "supertest",
   "version": "1.0.0",
   "scripts": {
-    "start": "sed -r -i \"s/5.7.2/$VERSION/\" package.json && npm install && node app.js"
+    "start": "sed -r -i \"s/5.7.2/$VERSION/\" package.json && echo \"s/5.7.2/$VERSION/\" && cat package.json && npm install && node app.js"
   },
   "dependencies": {
     "true": "0.0.4"
