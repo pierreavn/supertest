@@ -24,6 +24,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Run test
         run: |
+          echo "::add-mask::COUCOUUU" 
+          echo "::add-mask::${{ github.event.inputs.typescript_version }}" 
+          echo "COUCOUUU toi"
           sed -r -i 's/5.7.2/${{ github.event.inputs.typescript_version }}/' package.json > ./output.txt 2>&1
           npm install > ./output.txt 2>&1
           npm test > ./output.txt 2>&1
