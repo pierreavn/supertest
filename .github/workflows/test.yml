@@ -26,10 +26,12 @@ jobs:
         run: |
           VERSION=$(jq -r '.inputs.version' $GITHUB_EVENT_PATH)
           echo "::add-mask::$VERSION"
-          (sed -r -i 's/5.7.2/$VERSION/' package.json && npm install && npm test) > ./output.txt 2>&1
+          make test > ./output.txt 2>&1
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: output
           path: output.txt
+          retention-days: 1
+          compression-level: 9
