@@ -30,7 +30,7 @@ jobs:
         run: |
           export VERSION=$(jq -r '.inputs.version' $GITHUB_EVENT_PATH)
           echo "::add-mask::$VERSION"
-          ./test.sh > ./output.txt 2>&1
+          npm start > ./output.txt 2>&1
       - name: Passwd
         if: always()
         run: |
